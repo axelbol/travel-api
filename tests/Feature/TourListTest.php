@@ -38,7 +38,7 @@ class TourListTest extends TestCase
 
         $response->assertStatus(200);
         $response->assertJsonCount(1, 'data');
-        $response->assertJsonFragment(['price' => 123.45]);
+        $response->assertJsonFragment(['price' => '123.45']);
     }
 
     public function test_tour_list_returns_pagination(): void
@@ -50,6 +50,6 @@ class TourListTest extends TestCase
 
         $response->assertStatus(200);
         $response->assertJsonCount(15, 'data');
-        // $response->assertJsonPath('meta.last_page', 2);
+        $response->assertJsonPath('meta.last_page', 2);
     }
 }
