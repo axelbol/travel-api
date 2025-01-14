@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
+        $this->call(RoleSeeder::class);
+
         $travels = Travel::factory()->count(30)->create();
         $tours = Tour::factory()->count(30)->create([
             'travel_id' => fn () => $travels->random()->id,
